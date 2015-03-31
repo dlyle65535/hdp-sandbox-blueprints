@@ -5,7 +5,7 @@
       "name" : "host_group_1",
       "hosts" : [
         {
-          "fqdn" : "sandbox.hortonworks.com"
+          "fqdn" : "REPLACE-ME"
         }
       ]
     }
