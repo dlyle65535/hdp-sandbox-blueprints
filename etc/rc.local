@@ -20,7 +20,7 @@ while [ ! -f /root/.ssh/authorized_keys ] && [ $ReTry -lt 10 ]; do
   if [ 0 -eq 0 ]; then
     mv /root/.ssh/pubkey /root/.ssh/authorized_keys
   fi
-  ReTry=$[Retry+1]
+  ReTry=$[ReTry+1]
 done
 chmod 600 /root/.ssh/authorized_keys && restorecon /root/.ssh/authorized_keys
 
@@ -29,6 +29,6 @@ if [ -f /root/firstrun ]; then
   dd if=/dev/urandom count=50|md5sum|passwd --stdin root
   passwd -l root
   cd /root/hdp-setup
-  ./setup-hdp.sh > /var/log/hdp-setup.log 2>&1
+  ./setup-hdp.sh -c > /var/log/hdp-setup.log 2>&1
   rm /root/firstrun
 fi
