@@ -11,6 +11,9 @@ Blueprint can also be used to build create a cluster.
 5. Use new Ambari password to access admin account on http://your-instance-public-hostname:8080
 6. Watch cluster build progress on Ambari.
  
+*Note* - if you want to create a security group on AWS containing the port mappings from the sandbox, the following line may be helpful (assuming you've downloaded the Hortonworks Sandbox and created a Sandbox security group on AWS):
+>`VBoxManage showvminfo "Hortonworks Sandbox with HDP 2.2" --details | grep Rule | awk '{print "aws ec2 authorize-security-group-ingress --group-name Sandbox --protocol tcp --port " $17 " --cidr <your public ip>/32" }' | sed 's/,//g' | grep -v 2222`
+This will emit a script to authorize ingress on all the required ports. You'll also need to add port 22.
 
 ### Usage - Build from blueprint
 1. Install/Setup/Start ambari-server and ambari-agent on your host. 
