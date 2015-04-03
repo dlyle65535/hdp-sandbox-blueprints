@@ -1,7 +1,18 @@
 # hdp-sandbox-blueprints
-Basic single node blueprint and hostmap file to create a cluster.
+AMI Template for single node HDP AMI instance. Runs as ami-b25e6fda on AWS.
 
-### Usage
+Blueprint can also be used to build create a cluster.
+
+### Usage - AMI
+1. Launch instance from ami-b25e6fda. Recommend m3.large or bigger. Make sure port 22 and 8080 are exposed.
+2. Login to instance via ssh.
+3. tail -f /var/log/hdp-setup.log.
+4. Wait for Ambari password change message in log.
+5. Use new Ambari password to access admin account on http://your-instance-public-hostname:8080
+6. Watch cluster build progress on Ambari.
+ 
+
+### Usage - Build from blueprint
 1. Install/Setup/Start ambari-server and ambari-agent on your host. 
 2. Change hostname in sandbox.hostmapping to your fqdn
 3. Load blueprint into Ambari: 
